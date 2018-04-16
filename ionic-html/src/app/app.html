@@ -1,1 +1,34 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-split-pane>
+    <ion-menu [content]="content" side="left" id="menu_1">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Left Menu</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            leftMenu(menu_1)
+        </ion-content>
+    </ion-menu>
+    <ion-menu [content]="content" side="left" id="menu_1b">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Left Menu</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            leftMenu(menu_1b)
+        </ion-content>
+    </ion-menu>
+    <ion-menu [content]="content" side="right" id="menu_2">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Right Menu</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            bbbb
+        </ion-content>
+    </ion-menu>
+
+    <ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>
+</ion-split-pane>

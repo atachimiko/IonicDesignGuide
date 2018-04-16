@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, NgZone } from '@angular/core';
+import { Logger, Options as LoggerOptions, Level as LoggerLevel } from "angular2-logger/core";
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -24,7 +25,20 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: LoggerOptions, useValue: { level: LoggerLevel.DEBUG } },
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Logger,
   ]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private _logger: Logger
+    ,private _ngZone: NgZone)
+  {
+    _logger.info("アプリケーションの初期化");
+
+    window['angularComponentRef'] = {
+      component: this,
+      zone: this._ngZone
+    };
+  }
+}
