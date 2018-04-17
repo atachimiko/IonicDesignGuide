@@ -34,7 +34,7 @@ export class HomePage {
   fitImageContainer(): void {
     let dimention = this.content.getContentDimensions();
     this._logger.info("コンテントのDimention",dimention);
-    this.ImageHeight = dimention.contentHeight - dimention.contentTop;
+    this.ImageHeight = dimention.contentHeight - dimention.contentTop + 56; // 56は、ヘッダー領域の高さ（環境依存）
   }
 
     /**
